@@ -10,15 +10,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
 
 public class JanelaPrincipalTest {
     private JanelaPrincipal janelaPrincipal;
     private ArrayList<Pokemon> pokemons;
-    private JTable jTablePokemons;
-    private final String[] CABECALHO_POKEMONS = new String[]{"ID", "NOME", "TIPO 1", "TIPO 2"};
 
     public JanelaPrincipalTest() {
     }
@@ -34,11 +31,8 @@ public class JanelaPrincipalTest {
 
     @Test
     public void testAtualizarTabelaPokemon() {
-        ArrayList<Pokemon> pokemons = new ArrayList();
-        pokemons.add(new Pokemon(1, "Bulbasaur", "Grass", "Poison"));
-        pokemons.add(new Pokemon(2, "Charmander", "Fire", ""));
         TableModel modeloAtualizado = this.janelaPrincipal.atualizarTabelaPokemon(pokemons);
-        Assertions.assertEquals(2, modeloAtualizado.getRowCount());
+        Assertions.assertEquals(3, modeloAtualizado.getRowCount());
 
         for(int i = 0; i < pokemons.size(); ++i) {
             Assertions.assertEquals(String.valueOf(((Pokemon)pokemons.get(i)).getId()), modeloAtualizado.getValueAt(i, 0));
