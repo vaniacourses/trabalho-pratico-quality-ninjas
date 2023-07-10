@@ -25,9 +25,9 @@ public class DetalhesPokemonTest {
 
     @Test
     public void testPreencher() {
-        Pokemon pokemon1 = new Pokemon(2, "Bulbasaur", "Grass", "Poison", 318, 45, 49, 49, 65, 65, 45, 1, false, 0.7f, 6.9f);
-        Pokemon pokemon2 = new Pokemon(1, "Articuno", "Ice", "Flying", 580, 90, 85, 100, 95, 125, 85, 1, true, 1.7f, 55.4f);
-        Pokemon pokemon3 = new Pokemon(2, "Zapdos", "Electric", "Flying", 580, 90, 90, 85, 125, 90, 100, 1, true, 1.6f, 52.6f);
+        Pokemon pokemon1 = new Pokemon(1, "Bulbasaur", "Grass", "Poison", 318, 45, 49, 49, 65, 65, 45, 1, false, 0.7f, 6.9f);
+        Pokemon pokemon2 = new Pokemon(144, "Articuno", "Ice", "Flying", 580, 90, 85, 100, 95, 125, 85, 1, true, 1.7f, 55.4f);
+        Pokemon pokemon3 = new Pokemon(145, "Zapdos", "Electric", "Flying", 580, 90, 90, 85, 125, 90, 100, 1, true, 1.6f, 52.6f);
 
         detalhesPokemon.preencher(pokemon1);
 
