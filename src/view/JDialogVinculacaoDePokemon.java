@@ -9,11 +9,11 @@ import javax.swing.table.TableColumn;
  */
 public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
 
-    private final String CABECALHO_POKEMONS[] = {"ID","NOME","TIPO"};
+    private final String CABECALHO_POKEMONS[] = {"ID","NOME","TIPO 1", "TIPO 2"};
     
-    private model.Treinador treinador;
-    private ArrayList<model.Pokemon> pokemons;
-    private ArrayList<model.Pokemon> listaDePokemons;
+    protected model.Treinador treinador;
+    protected ArrayList<model.Pokemon> pokemons;
+    protected ArrayList<model.Pokemon> listaDePokemons;
     
     private boolean retorno;
     
@@ -36,7 +36,7 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
      * @param array 
      * Um array de pokemons
      */
-    private void atualizarTabelaPokemon(ArrayList<model.Pokemon> array) {
+    protected void atualizarTabelaPokemon(ArrayList<model.Pokemon> array) {
         if (array != null) {
             String[][] retorno = new String[array.size()][4];
 
@@ -59,7 +59,7 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
      * @param listaDePokemons 
      * Lista de pokemons para obter o nome dos mesmos.
      */
-    private void listar(ArrayList<model.Pokemon> listaDePokemons){
+    protected void listar(ArrayList<model.Pokemon> listaDePokemons){
         String [] lista = new String[listaDePokemons.size()];
         
         for(int i = 0; i < listaDePokemons.size(); i++){
@@ -72,10 +72,10 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
     /**
      * Adiciona pokemons á tabela de adicionados.
      */
-    private void add(){
+    protected void add(){
         int index = jComboBoxPokemons.getSelectedIndex();
         this.listaDePokemons.add(this.pokemons.get(index));
-        
+
         this.pokemons.remove(index);
         listar(this.pokemons);
         atualizarTabelaPokemon(this.listaDePokemons);
@@ -85,7 +85,7 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
      * Salva em CSV os pokemons vinculados ao treinadore recebido como parâmetro no construtor.
      * @return 
      */
-    private boolean salvar() {
+    boolean salvar() {
         for(int i = 0; i < this.listaDePokemons.size(); i++){
             model.InOut.escreverArquivo(this.listaDePokemons.get(i).getId() + "," + treinador.getId() + "," + this.listaDePokemons.get(i).getName() + "," + this.listaDePokemons.get(i).getType1() + "," + this.listaDePokemons.get(i).getType2() + "," + this.listaDePokemons.get(i).getTotal() + "," + this.listaDePokemons.get(i).getHp() + "," + this.listaDePokemons.get(i).getAttack() + "," + this.listaDePokemons.get(i).getDefense() + "," + this.listaDePokemons.get(i).getAtk()+ "," + this.listaDePokemons.get(i).getSpDef()+ "," + this.listaDePokemons.get(i).getSpeed()+ "," + this.listaDePokemons.get(i).getGeneration()+ "," + this.listaDePokemons.get(i).isLegendary() + "," + this.listaDePokemons.get(i).getHeight() + "," + this.listaDePokemons.get(i).getWeight(),JanelaPrincipal.ARQUIVO_POKEMONS_TREINADORES);
         }
@@ -104,7 +104,8 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    protected void
+    initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -124,7 +125,8 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font(
+                "Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CADASTRO DE POKÉMONS");
 
@@ -247,12 +249,13 @@ public class JDialogVinculacaoDePokemon extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBoxPokemons;
+    protected
+    javax.swing.JComboBox<String> jComboBoxPokemons;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1NomeTreinador;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablePokemons;
+    protected javax.swing.JTable jTablePokemons;
     // End of variables declaration//GEN-END:variables
 }
