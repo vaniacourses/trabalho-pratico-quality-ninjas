@@ -1,5 +1,7 @@
 # Pokédex
 
+Projeto criado por Guilherme Mendes no link https://github.com/guilherme-mendes, usado como base para testes para a matéria de Qualidade e Teste, na UFF.
+
 Acesse a descrição completa deste exercício na [wiki](https://gitlab.com/oofga/eps/eps_2018_2/ep2/wikis/home).
 
 # Como usar o projeto
