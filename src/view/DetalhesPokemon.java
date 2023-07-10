@@ -8,8 +8,8 @@ import javax.swing.ImageIcon;
  */
 public class DetalhesPokemon extends javax.swing.JDialog {
 
-    private model.Pokemon pokemon;
-    private boolean retorno;
+    protected model.Pokemon pokemon;
+    protected boolean retorno;
    
     public DetalhesPokemon(java.awt.Frame parent, model.Pokemon pokemon) {
         super(parent, true);
@@ -25,7 +25,7 @@ public class DetalhesPokemon extends javax.swing.JDialog {
      * Os campos e preguessBars com os dados recebido pelo objeto via construtor.
      * @param pokemon 
      */
-    private void preencher(model.Pokemon pokemon){
+    protected void preencher(model.Pokemon pokemon){
         this.setTitle("" + pokemon.getName());
         
         jLabelAtaque.setText("" + pokemon.getAttack());
@@ -377,7 +377,7 @@ public class DetalhesPokemon extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabeDefesa;
-    private javax.swing.JLabel jLabeT2;
+    public javax.swing.JLabel jLabeT2;
     private javax.swing.JLabel jLabeTotal;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -397,13 +397,13 @@ public class DetalhesPokemon extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelAtk;
     private javax.swing.JLabel jLabelGeration;
     private javax.swing.JLabel jLabelHeight;
-    private javax.swing.JLabel jLabelHp;
-    private javax.swing.JLabel jLabelLeg;
-    private javax.swing.JLabel jLabelName;
+    protected javax.swing.JLabel jLabelHp;
+    protected javax.swing.JLabel jLabelLeg;
+    public javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelPokeImage;
     private javax.swing.JLabel jLabelSpDefesa;
     private javax.swing.JLabel jLabelSpeed;
-    private javax.swing.JLabel jLabelT1;
+    public javax.swing.JLabel jLabelT1;
     private javax.swing.JLabel jLabelWeight;
     private javax.swing.JProgressBar jProgressBarAtaque;
     private javax.swing.JProgressBar jProgressBarAtk;
