@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static model.InOut.escreverArquivo;
+import static model.InOut.lerArquivo;
 
 public class InOutTest {
 
@@ -34,6 +35,11 @@ public class InOutTest {
 
         File arquivo = new File("C:/Users/Amanda/IdeaProjects/pokedex-master/data/treinadores.txt");
         Assertions.assertTrue(arquivo.exists());
+
+        String conteudoEsperado = lerArquivo(arquivo);
+        conteudoEsperado = conteudoEsperado.trim();
+
+        Assertions.assertEquals(conteudoEsperado, conteudo);
 
         List<String> linhas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(arquivo))) {
@@ -80,10 +86,8 @@ public class InOutTest {
 
         Assertions.assertFalse(pokemons.isEmpty());
 
-        // Verifica se o número de pokemons importados está correto
         Assertions.assertEquals(1, pokemons.size());
 
-        // Verifica se os atributos dos pokemons foram importados corretamente
         model.Pokemon pokemon1 = pokemons.get(0);
         Assertions.assertEquals(1, pokemon1.getId());
         Assertions.assertEquals("Bulbasaur", pokemon1.getName());
@@ -101,7 +105,6 @@ public class InOutTest {
         Assertions.assertEquals(7.0f, pokemon1.getHeight());
         Assertions.assertEquals(6.0f, pokemon1.getWeight());
 
-        // Exclui o arquivo de teste
         deletarArquivo(caminhoArquivo);
     }
 
@@ -120,10 +123,8 @@ public class InOutTest {
 
         Assertions.assertFalse(pokemonsDeTreinador.isEmpty());
 
-        // Verifica se o número de pokemons de treinador importados está correto
         Assertions.assertEquals(3, pokemonsDeTreinador.size());
 
-        // Verifica se os atributos dos pokemons de treinador foram importados corretamente
         model.PokemonDeTreinador pokemonDeTreinador1 = pokemonsDeTreinador.get(0);
         Assertions.assertEquals(1, pokemonDeTreinador1.getId());
         Assertions.assertEquals(1, pokemonDeTreinador1.getIdTreinador());
@@ -142,17 +143,15 @@ public class InOutTest {
         Assertions.assertEquals(7.0f, pokemonDeTreinador1.getHeight());
         Assertions.assertEquals(6.0f, pokemonDeTreinador1.getWeight());
 
-        // Exclui o arquivo de teste
         deletarArquivo(caminhoArquivo);
     }
 
     @Test
     public void testConverter() {
-        boolean resultadoEsperado = true;
 
         boolean resultado = InOut.converter("true");
 
-        Assertions.assertEquals(resultadoEsperado, resultado);
+        Assertions.assertTrue(resultado);
     }
 
     private void escreverArquivoDeTeste(String conteudo, String caminhoArquivo) throws IOException {
