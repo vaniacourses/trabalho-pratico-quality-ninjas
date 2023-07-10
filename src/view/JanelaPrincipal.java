@@ -1,8 +1,11 @@
 package view;
 
+import model.Pokemon;
+
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 /**
  * Janela principal da Pokedex.
@@ -36,10 +39,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     
     /**
      * Preenche a tabela com alguns dados dos pokemons.
-     * @param array 
+     * @param array
      * Um array de pokemons
+     * @return
      */
-    private void atualizarTabelaPokemon(ArrayList<model.Pokemon> array) {
+    public TableModel atualizarTabelaPokemon(ArrayList<Pokemon> array) {
         if (array != null) {
             String[][] retorno = new String[array.size()][4];
 
@@ -54,15 +58,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
             TableColumn colunaTelefoneCelular = jTablePokemons.getColumnModel().getColumn(1);
             colunaTelefoneCelular.setPreferredWidth(500);
+
+            return jTablePokemons.getModel();
         }
+        return null;
     }
     
     /**
      * Pesquisa pokemons por nome.
      * @param conteudoPesquisa
      * Uma String que sera comparada com o nome.
+     * @return
      */
-    private void pesquisarPokemons(String conteudoPesquisa) {
+    public ArrayList<Pokemon> pesquisarPokemons(String conteudoPesquisa) {
         ArrayList<model.Pokemon> retorno = new ArrayList();
 
         for (int i = 0; i < this.pokemons.size(); i++) {
@@ -78,15 +86,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         this.pokemonsFiltrados = retorno;
         atualizarTabelaPokemon(retorno);
+        return retorno;
    }
     
     /**
      * Filtra os pokemons pelo type1 e type2;
+     * @return
      */
-    private void filtrarPokemons() {
+    public ArrayList<Pokemon> filtrarPokemons() {
+        ArrayList<model.Pokemon> retorno = new ArrayList();
+
         if (jComboBoxTipo.getSelectedIndex() != 0) {
 
-            ArrayList<model.Pokemon> retorno = new ArrayList();
+
 
             for (int i = 0; i < this.pokemons.size(); i++) {
                    if(this.pokemons.get(i).getType1().equals((String) jComboBoxTipo.getSelectedItem())){
@@ -108,6 +120,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             this.pokemonsFiltrados = this.pokemons;
             atualizarTabelaPokemon(this.pokemonsFiltrados);
         }
+
+        return retorno;
     }
     
     /**

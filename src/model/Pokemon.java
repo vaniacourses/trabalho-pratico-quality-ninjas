@@ -40,6 +40,17 @@ public class Pokemon {
         this.weight = weight;
     }
 
+    public Pokemon(int id, String name, String type1, String type2) {
+        this.id = id;
+        this.name = name;
+        this.type1 = type1;
+        this.type2 = type2;
+
+    }
+
+    public Pokemon() {
+    }
+
     public int getId() {
         return id;
     }
